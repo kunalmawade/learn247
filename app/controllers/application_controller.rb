@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
   # def url_after_denied_access_when_signed_out
   #   '/'
   #end
+
+  private
+
+	def current_user
+	  User.new(session[:id])
+	end
+
+	helper_method :current_user
 end

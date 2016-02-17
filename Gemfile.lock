@@ -54,6 +54,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
+    cancancan (1.13.1)
     clearance (1.11.0)
       bcrypt
       email_validator (~> 1.4)
@@ -163,6 +164,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  cancancan (~> 1.10)
   clearance (~> 1.11)
   coffee-rails (~> 4.1.0)
   jquery-rails

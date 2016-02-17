@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
   resources :pages, only: [:new]
+  resources :sessions, only: [:update]
 
   constraints Clearance::Constraints::SignedIn.new do
     root to: 'pages#new', as: :signed_in_root

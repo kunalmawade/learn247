@@ -1,8 +1,3 @@
-Source code for the [Simple Rails Authentication with Clearance](http://www.sitepoint.com/simple-rails-authentication-with-clearance/) article on
-SitePoint,
-created by Ilya Bodrov ([radiant-wind.com](http://radiant-wind.com)).
+# Learn247
 
-[Working demo](https://sitepoint-clearance.herokuapp.com/).
-
-
-
+A Learning Management System using Ruby on Rails
