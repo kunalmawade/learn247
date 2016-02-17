@@ -15,6 +15,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
+
+  gem 'pry'
 end
 
 group :production do

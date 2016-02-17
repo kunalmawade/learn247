@@ -13,4 +13,13 @@
 
 class User < ActiveRecord::Base
   include Clearance::User
+  after_create :add_profile
+
+  has_one :profile
+
+  private
+
+  def add_profile
+  	Profile.create!.user = self
+  end
 end

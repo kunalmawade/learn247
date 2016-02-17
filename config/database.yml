@@ -8,6 +8,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  database: learn247
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -30,7 +31,6 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
 
 # production:
 #   <<: *default
