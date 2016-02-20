@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   after_create :add_profile
 
   has_one :profile
+  has_many :enrollments
+  has_many :courses, through: :enrollments
 
   private
 
