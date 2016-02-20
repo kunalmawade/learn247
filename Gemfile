@@ -12,11 +12,13 @@ gem 'cancancan', '~> 1.10'
 
 gem 'thin'
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
+
+  gem 'pry'
 end
 
 group :production do

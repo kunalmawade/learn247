@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Courses</h1>
+
+<% if current_user.role == 'student' %>
+  <% render partial: "admin_index", object: @courses %>
+
+<br>
+
+<%= link_to 'New Course', new_course_path %>

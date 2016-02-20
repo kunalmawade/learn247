@@ -27,21 +27,15 @@
             Role
             <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu" role="menu">
-            <% User::ROLES.each do |k, v| %>
-              <li>
-                <%= link_to session_path(k), method: :patch do %>
-                  <%= v %>
-                  <% if v == current_user.role %>
-                    <small class="text-muted">(current)</small>
-                  <% end %>
-                <% end %>
-              </li>
+          <% User::ROLES.each do |k, v| %>
+            <% if v == current_user.role %>
+              <%= link_to session_path(k), method: :patch %>
+              <%= v %>
             <% end %>
-          </ul>
-        </li>
+          <% end %>
+        </li> 
         <% if signed_in? %>
-          <li><span><%= current_user.email %></span></li>
+          <li><span><%= link_to current_user.email, edit_profile_path(current_user.profile.id) %></span></li>
           <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
         <% else %>
           <li><%= link_to 'Sign in', sign_in_path %></li>

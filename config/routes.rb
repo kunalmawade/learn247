@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :courses
+  resources :profiles
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -16,11 +18,11 @@ Rails.application.routes.draw do
   resources :sessions, only: [:update]
 
   constraints Clearance::Constraints::SignedIn.new do
-    root to: 'pages#new', as: :signed_in_root
+    root to: 'welcome#show', as: :signed_in_root
   end
 
   constraints Clearance::Constraints::SignedOut.new do
-    root to: 'pages#index'
+    root to: 'welcome#index'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

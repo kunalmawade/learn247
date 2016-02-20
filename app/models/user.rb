@@ -14,15 +14,26 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
-  ROLES = {0 => :guest, 1 => :user, 2 => :instructor, 3 => :admin}
+  after_create :add_profile
+  has_one :profile
 
-  attr_reader :role
+  ROLES = %i[guest student instructor admin]
 
-  def initialize(role_id = 0)
-    @role = ROLES.has_key?(role_id.to_i) ? ROLES[role_id.to_i] : ROLES[0]
+  def student?
+    role == 'student'
   end
 
-  def role?(role_name)
-    role == role_name
+  def instructor?
+    role == 'instructor'
+  end
+
+  def admin?
+    role == 'admin'
+  end
+
+  private
+
+  def add_profile
+  	Profile.create!.user = self
   end
 end
