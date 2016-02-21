@@ -18,6 +18,8 @@ development:
   encoding: unicode
   database: learn247
   pool: 5
+  username: 
+  password: 
 
 # development:
 #   <<: *default
