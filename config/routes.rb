@@ -14,14 +14,14 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
-  resources :pages, only: [:new]
+  resources :sessions, only: [:update]
 
   constraints Clearance::Constraints::SignedIn.new do
-    root to: 'pages#new', as: :signed_in_root
+    root to: 'welcome#show', as: :signed_in_root
   end
 
   constraints Clearance::Constraints::SignedOut.new do
-    root to: 'pages#index'
+    root to: 'welcome#index'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

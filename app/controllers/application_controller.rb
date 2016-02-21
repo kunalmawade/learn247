@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
   # def url_after_denied_access_when_signed_out
   #   '/'
   #end
+  
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:warning] = exception.message
+    redirect_to root_path
+  end
 end

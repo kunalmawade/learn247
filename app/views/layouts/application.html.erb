@@ -15,15 +15,10 @@
       <%= link_to 'Learn 24x7', root_path, class: 'navbar-brand' %>
     </div>
     <div id="navbar">
-      <% if signed_in? %>
-        <ul class="nav navbar-nav">
-          <li><%= link_to 'Add Page', new_page_path %></li>
-        </ul>
-      <% end %>
-
       <ul class="nav navbar-nav pull-right">
+        <li><span><%= current_user.role.humanize if current_user.present? %><span></li>
         <% if signed_in? %>
-          <li><span><%= link_to current_user.email, edit_profile_path(current_user.profile.id) %></span></li>
+          <li><span><%= link_to current_user.email, profile_path(current_user.profile.id) %></span></li>
           <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
         <% else %>
           <li><%= link_to 'Sign in', sign_in_path %></li>
@@ -35,7 +30,7 @@
 
 <div class="container">
   <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>">
+    <div class="alert alert-<%= key %>" role="alert">
       <%= value %>
     </div>
   <% end %>

@@ -13,11 +13,25 @@
 
 class User < ActiveRecord::Base
   include Clearance::User
-  after_create :add_profile
 
+  after_create :add_profile
   has_one :profile
   has_many :enrollments
   has_many :courses, through: :enrollments
+
+  ROLES = %i[guest student instructor admin]
+
+  def student?
+    role == 'student'
+  end
+
+  def instructor?
+    role == 'instructor'
+  end
+
+  def admin?
+    role == 'admin'
+  end
 
   private
 

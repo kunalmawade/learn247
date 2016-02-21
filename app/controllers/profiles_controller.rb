@@ -1,5 +1,8 @@
 class ProfilesController < ApplicationController
+  check_authorization
+  authorize_resource :only => [:index, :edit, :show, :update]
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
   # GET /profiles
   def index
@@ -17,6 +20,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    #authorize! :edit, Profile
   end
 
   # POST /profiles
@@ -34,7 +38,8 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   def update
     if @profile.update(profile_params)
-      redirect_to @profile, notice: 'Profile was successfully updated.'
+      flash[:success] = 'Profile was successfully updated.'
+      redirect_to @profile
     else
       render :edit
     end
@@ -46,14 +51,14 @@ class ProfilesController < ApplicationController
     redirect_to profiles_url, notice: 'Profile was successfully destroyed.'
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
+private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_profile
+    @profile = Profile.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :birth_date, :gender, :address, :city, :state, :country, :zipcode, :phone)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def profile_params
+    params.require(:profile).permit(:first_name, :last_name, :birth_date, :gender, :address, :city, :state, :country, :zipcode, :phone)
+  end
 end
