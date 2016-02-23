@@ -1,8 +1,8 @@
 class ProfilesController < ApplicationController
-  check_authorization
-  authorize_resource :only => [:index, :edit, :show, :update]
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :require_login
+  check_authorization
+  authorize_resource :only => [:new, :index, :edit, :show, :update]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /profiles
   def index
@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1
   def show
+    @profile = check_permission.first
   end
 
   # GET /profiles/new
@@ -20,7 +21,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-    #authorize! :edit, Profile
+    @profile = check_permission.first
   end
 
   # POST /profiles
@@ -37,6 +38,8 @@ class ProfilesController < ApplicationController
 
   # PATCH/PUT /profiles/1
   def update
+    @profile = check_permission.first
+
     if @profile.update(profile_params)
       flash[:success] = 'Profile was successfully updated.'
       redirect_to @profile
@@ -52,6 +55,10 @@ class ProfilesController < ApplicationController
   end
 
 private
+  def check_permission
+    Profile.accessible_by(current_ability, params[:action].to_sym)
+  end
+  
   # Use callbacks to share common setup or constraints between actions.
   def set_profile
     @profile = Profile.find(params[:id])

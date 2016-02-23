@@ -33,11 +33,9 @@ class Ability
     alias_action :show, :to => :read_one
 
     if user.student?
-      can [:update, :read_one], Profile
-      can :read, Course 
+      can [:update, :read_one], Profile, :user_id => user.id
     elsif user.instructor?
-      can :read, Course
-      can [:read_one, :update], Profile
+      can [:read_one, :update], Profile, :user_id => user.id
     elsif user.admin?
       can :manage, :all 
     end

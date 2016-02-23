@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
     flash[:warning] = exception.message
     redirect_to root_path
   end
+
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    flash[:warning] = 'We could not find the resource :-('
+    redirect_to root_path
+  end
 end

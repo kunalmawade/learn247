@@ -33,6 +33,11 @@ class User < ActiveRecord::Base
     role == 'admin'
   end
 
+  def sign_in(user)
+    user.reset_remember_token! if user
+    super
+  end
+
   private
 
   def add_profile

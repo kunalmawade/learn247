@@ -1,6 +1,9 @@
 class CoursesController < ApplicationController
+  before_action :require_login
+  check_authorization
+  authorize_resource :only => [:new, :index, :edit, :show, :update, :destroy]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /courses
   def index
     @courses = Course.all
@@ -45,14 +48,15 @@ class CoursesController < ApplicationController
     redirect_to courses_url, notice: 'Course was successfully destroyed.'
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_course
-      @course = Course.find(params[:id])
-    end
+private
 
-    # Only allow a trusted parameter "white list" through.
-    def course_params
-      params.require(:course).permit(:name, :start_date, :end_date, :class_average)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_course
+    @course = Course.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def course_params
+    params.require(:course).permit(:name, :start_date, :end_date, :class_average)
+  end
 end
