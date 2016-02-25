@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -16,12 +17,14 @@
     </div>
     <div id="navbar">
       <ul class="nav navbar-nav pull-right">
-        <li><span><%= current_user.role.humanize if current_user.present? %><span></li>
+        <% if current_user.present? %>
+          <li><span><%= current_user.role.humanize %>: &nbsp;&nbsp;<span></li>
+        <% end %>
         <% if signed_in? %>
-          <li><span><%= link_to current_user.email, profile_path(current_user.profile.id) %></span></li>
-          <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
+          <li><span><%= link_to current_user.email, profile_path(current_user.profile.id) %>&nbsp;&nbsp;</span></li>
+          <li><span> <i class="fa fa-sign-in"> <%= link_to 'Sign out', sign_out_path, method: :delete %></i><span></li>
         <% else %>
-          <li><%= link_to 'Sign in', sign_in_path %></li>
+          <li><span> <i class="fa fa-sign-in"> <%= link_to 'Sign in', sign_in_path %></i><span></li>
         <% end %>
       </ul>
     </div>
@@ -36,12 +39,11 @@
   <% end %>
 
   <%= yield %>
-
-  <div id="footer">
-    <div class="container-fluid">
-    </div>
-  </div>
 </div>
-
 </body>
+<footer class="footer">
+  <p>
+      &copy; 2016 Learn 24x7
+  </p>
+</footer>
 </html>
