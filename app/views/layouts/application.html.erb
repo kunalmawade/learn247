@@ -18,7 +18,7 @@
     <div id="navbar">
       <ul class="nav navbar-nav pull-right">
         <% if current_user.present? %>
-          <li><span><%= current_user.role.humanize %>: &nbsp;&nbsp;<span></li>
+          <li><span><%= User::ROLES[current_user.role] %>: &nbsp;&nbsp;<span></li>
         <% end %>
         <% if signed_in? %>
           <li><span><%= link_to current_user.email, profile_path(current_user.profile.id) %>&nbsp;&nbsp;</span></li>

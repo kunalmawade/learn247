@@ -1,6 +1,15 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 50px;
+}
+
 .navbar-nav > li > span {
   padding-bottom: 15px;
   padding-top: 15px;
@@ -46,13 +55,15 @@
 	}
 }
 
-footer {  
-  margin-top: 30px;
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  padding-top: 26px;
-  padding-bottom: 20px;
   background: lightgray; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(lightgray, white); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(lightgray, white); /* For Opera 11.1 to 12.0 */

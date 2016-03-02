@@ -19,20 +19,26 @@ class User < ActiveRecord::Base
   has_many :enrollments
   has_many :courses, through: :enrollments
 
-  ROLES = %i[guest student instructor admin]
+  ROLES = %i[Guest Student Instructor Admin]
+
+  STATUS = %i[Active Blocked]
 
   def student?
-    role == 'student'
+    role == 1
   end
 
   def instructor?
-    role == 'instructor'
+    role == 2
   end
 
   def admin?
-    role == 'admin'
+    role == 3
   end
 
+  def guest?
+    role == 0
+  end
+  
   def sign_in(user)
     user.reset_remember_token! if user
     super

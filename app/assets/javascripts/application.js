@@ -16,4 +16,6 @@
 //= require jquery.turbolinks
 //= require bootstrap/dropdown
 //= require bootstrap/carousel
+//= require bootstrap/collapse
+//= require users.coffee
 //= require_tree .

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<% if @users.present? %>
+	<table class='table table-striped table-bordered table-hover table-responsive'>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name </th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Edit/Update</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr id="user-show-<%= user.id %>">          
+            <td><%= user.profile.first_name %></td>
+            <td><%= user.profile.last_name %></td>
+            <td class="user-edit"><%= User::ROLES[user.role] %></td>
+            <td class="user-edit"><%= User::STATUS[user.status] %></td>          
+            <td class='hidden user-update'><%= select_tag(:role, options_for_select([['Guest', 0], ['Student', 1], ['Instructor', 2], ['Admin', 3]], :selected => user.role)) %></td>
+            <td class='hidden user-update'><%= select_tag(:status, options_for_select([['Active', 0], ['Blocked', 1]], :selectd => user.status))%></td>
+            <td><button type="button" class="btn btn-default user-update hidden btn-update" data-user-id="<%= user.id %>">Update</button>
+            <button type="button" class="btn btn-default user-edit" data-user-id="<%= user.id %>">Edit</button>
+            <button type="button" class="btn btn-default hidden user-update user-cancel" data-user-id="<%= user.id %>">Cancel</button></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info" role="alert">
+    You do not have any courses to administrate.
+  </div>
+<% end %>
+
+<%= link_to 'New Course', new_course_path %>

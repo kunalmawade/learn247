@@ -36,6 +36,8 @@ class Ability
       can [:update, :read_one], Profile, :user_id => user.id
     elsif user.instructor?
       can [:read_one, :update], Profile, :user_id => user.id
+    elsif user.guest?
+      can [:read_one, :update], Profile, :user_id => user.id
     elsif user.admin?
       can :manage, :all 
     end

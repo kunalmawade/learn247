@@ -1,7 +1,9 @@
 <% if current_user.student? %>
-	<% render 'student_home', local:{ courses: @courses} %>
+	<%= render partial: 'student_home', local:{ courses: @courses} %>
 <% elsif current_user.instructor? %>
-	<% render 'instructor_home', local:{ courses: @courses} %>
+	<%= render partial: 'instructor_home', local:{ courses: @courses} %>
 <% elsif current_user.admin? %>
-	<% render 'admin_home', local:{ courses: @courses} %>
+	<%= render partial: 'admin_home', local:{ courses: @courses} %>
+<% else %>
+	<%= render partial: 'guest_home' %>
 <% end %>

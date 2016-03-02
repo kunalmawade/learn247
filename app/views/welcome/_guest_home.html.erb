@@ -1,0 +1,7 @@
+<div class="alert alert-info" role="alert">
+	<% if user_name.present? %>
+		Welcome<%= user_name %><br>
+	<% end %>
+  Please update your <%= link_to "profile", profile_path(current_user.profile.id) %>.<br>
+  Allow 24 hours to activate your account.
+</div>
