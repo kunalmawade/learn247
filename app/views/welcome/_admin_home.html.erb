@@ -5,15 +5,15 @@
         <h3 class="panel-title">Courses</h3>
       </div>
       <div class="panel-body">
-        Add/Edit/Remove courses
+        <%= link_to "Show All", courses_path, class: 'btn btn-primary'%>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= link_to("Users", users_path) %></h3>
+        <h3 class="panel-title">Users</h3>
       </div>
       <div class="panel-body">
-        Add/Edit users
+        <%= link_to "Show All", users_path, class: 'btn btn-primary'%>
       </div>
     </div>
   </div>

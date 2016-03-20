@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 20160302023116) do
     t.string   "name"
     t.date     "start_date"
     t.date     "end_date"
-    t.float    "class_average"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.float    "class_average", default: 0.0
+    t.integer  "session"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "enrollments", force: :cascade do |t|

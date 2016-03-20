@@ -1,4 +1,4 @@
-<%= form_for(@course) do |f| %>
+<%= form_for @course, :html => {:class => "form-horizontal"} do |f| %>
   <% if @course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -11,21 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="field form-group">
+    <%= f.label :name, class: "col-sm-1 control-label" %>
+    <div class="col-sm-3">
+      <%= f.text_field :name, placeholder: 'Enter course name', class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
+  <div class="field form-group">
+    <%= f.label :start_date, class: "col-sm-1 control-label" %>
+    <div class="col-sm-3">
+      <%= f.date_select :start_date, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
+  <div class="field form-group">
+    <%= f.label :end_date, class: "col-sm-1 control-label" %>
+    <div class="col-sm-3">
+      <%= f.date_select :end_date, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :class_average %><br>
-    <%= f.text_field :class_average %>
+  <div class="field form-group">
+    <%= f.label :session, class: "col-sm-1 control-label" %>
+    <div class="col-sm-3">
+      <div><%= f.select :session, options_for_select([['Winter', 0], ['Spring', 1], ['Summer', 2], ['Fall', 3]], :selected => @course.session) %></div>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -24,19 +24,19 @@ class User < ActiveRecord::Base
   STATUS = %i[Active Blocked]
 
   def student?
-    role == 1
+    role == ROLES.index(:Student)
   end
 
   def instructor?
-    role == 2
+    role == ROLES.index(:Instructor)
   end
 
   def admin?
-    role == 3
+    role == ROLES.index(:Admin)
   end
 
   def guest?
-    role == 0
+    role == ROLES.index(:Guest)
   end
   
   def sign_in(user)

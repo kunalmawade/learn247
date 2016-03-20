@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   before_action :require_login
   check_authorization
-  authorize_resource :only => [:new, :index, :edit, :show, :update, :destroy]
+  authorize_resource :only => [:new, :index, :create, :edit, :show, :update, :destroy]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses
@@ -49,7 +49,6 @@ class CoursesController < ApplicationController
   end
 
 private
-
   # Use callbacks to share common setup or constraints between actions.
   def set_course
     @course = Course.find(params[:id])
@@ -57,6 +56,6 @@ private
 
   # Only allow a trusted parameter "white list" through.
   def course_params
-    params.require(:course).permit(:name, :start_date, :end_date, :class_average)
+    params.require(:course).permit(:session, :name, :start_date, :end_date, :class_average)
   end
 end

@@ -39,7 +39,8 @@ class Ability
     elsif user.guest?
       can [:read_one, :update], Profile, :user_id => user.id
     elsif user.admin?
-      can :manage, :all 
+      can :manage, :all
+      can [:read_one, :update], Profile, :user_id => user.id 
     end
   end
 
