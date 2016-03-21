@@ -1,12 +1,5 @@
-<p>
-  <strong>First name:</strong>
-  <%= @profile.first_name %>
-</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @profile.last_name %>
-</p>
+<h1><%= @profile.first_name %>&nbsp;<%= @profile.last_name %></h1>
 
 <p>
   <strong>Birth date:</strong>
@@ -48,9 +41,8 @@
   <%= @profile.phone %>
 </p>
 
-<p style="color:222222 !important;">
-  <span style="font-size:24px;">
-  <i class="fa fa-pencil-square-o"></i>
-  <%= link_to 'Edit', edit_profile_path(@profile) %>
+<p>
+  <i class="fa fa-2x fa-pencil-square-o"></i>
+  <%= link_to 'Edit', edit_profile_path(@profile), class: 'btn btn-warning' %>
 </span>
 </p>

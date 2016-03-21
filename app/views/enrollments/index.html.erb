@@ -1,0 +1,77 @@
+<h1>Enroll Users</h1>
+<h3>Find Courses</h3>
+<div class="row">
+  <div class="col-md-3">
+    <%= form_for "/filter_courses", method: "get", html: {id: 'search-form'} do %>
+      <table class="table table-striped table-bordered table-hover table-responsive">
+        <thead>
+          <tr>
+            <th>Session</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= select_tag(:session, options_for_select([['Winter', 0], ['Spring', 1], ['Summer', 2], ['Fall', 3]])) %>
+            </td>
+            <td>
+              <div class='input-group date' id='start-date'>
+                <input type='text' name='start_date'>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </td>
+            <td>
+              <div class='input-group date' id='end-date'>
+                  <input type='text' name="end_date">
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <button type="button" class="btn btn-default" id="btn-search">Search</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+<form action="index_submit" method="get" accept-charset="utf-8">
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Select <%= @user_type %></h4>
+      <table class="table table-striped table-bordered table-hover table-responsive">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= check_box_tag "users[]", user.id %></td>
+              <td><%= user.profile.first_name + ' ' + user.profile.last_name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <h4>Select Courses</h4>
+      <div id="courses">
+        <div class="alert alert-info" role="alert">Please find courses</div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary" id="btn-enroll">Enroll</button>
+    </div>
+  </div>
+</form>

@@ -41,7 +41,7 @@ class ProfilesController < ApplicationController
     @profile = check_permission.first
 
     if @profile.update(profile_params)
-      flash[:success] = 'Profile was successfully updated.'
+      flash[:notice] = 'Profile was successfully updated.'
       redirect_to @profile
     else
       render :edit

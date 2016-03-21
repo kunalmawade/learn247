@@ -12,49 +12,67 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :first_name, class: 'col-sm-2 control-label' %>
+    <%= f.label :first_name, class: 'col-sm-1 control-label' %>
     <div class='col-sm-4'>
-      <%= f.text_field :first_name, class: "form-control", placeholder: "Firstname" %>  
+      <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>  
     </div>
   </div>
   
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+  <div class="form-group">
+    <%= f.label :last_name, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-4'>
+      <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :birth_date %><br>
-    <%= f.date_select :birth_date %>
+  <div class="form-group">
+    <%= f.label :birth_date, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-4'>
+      <%= f.date_select :birth_date, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
+  <div class="form-group">
+    <%= f.label :gender, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-4'>
+      <%= f.select :gender, options_for_select([['Male',"male"],["Female", "female"], ["Other", "other"]], selected: @profile.gender), class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
+  <div class="form-group">
+    <%= f.label :address, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-4'>
+      <%= f.text_field :address, class: "form-control", placeholder: "e.g. 123 W 456 St., APT 7890" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
+  <div class="form-group">
+    <%= f.label :city, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-2'>
+      <%= f.text_field :city, class: "form-control", placeholder: "e.g. Kansas City" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
+  <div class="form-group">
+    <%= f.label :state, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-2'>
+      <%= f.text_field :state, class: "form-control", placeholder: "e.g. Kansas" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
+  <div class="form-group">
+    <%= f.label :country, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-2'>
+      <%= f.text_field :country, class: "form-control", placeholder: "e.g. USA" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :zipcode %><br>
-    <%= f.text_field :zipcode %>
+  <div class="form-group">
+    <%= f.label :zipcode, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-2'>
+      <%= f.text_field :zipcode, class: "form-control", placeholder: "e.g. 12345" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+  <div class="form-group">
+    <%= f.label :phone, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-2'>
+      <%= telephone_field :profile, :phone, class: "form-control",placeholder: "(123)-456-7890" %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

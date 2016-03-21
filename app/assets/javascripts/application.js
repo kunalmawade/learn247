@@ -17,5 +17,7 @@
 //= require bootstrap/dropdown
 //= require bootstrap/carousel
 //= require bootstrap/collapse
+//= require moment
+//= require bootstrap-datetimepicker
 //= require users.coffee
 //= require_tree .

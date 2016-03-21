@@ -1,0 +1,14 @@
+<table class="table table-striped table-bordered table-hover table-responsive">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+    </tr>
+  </thead>
+	<% @courses.each do |course| %>
+	  <tr>
+	    <td><%= check_box_tag "courses[]", course.id %></td>
+	    <td><%= course.name %></td>
+	  </tr>
+	<% end %>
+</table>

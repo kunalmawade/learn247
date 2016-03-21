@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :courses
   resources :profiles
+  resources :enrollments, only: [:index]
+  
+  get '/filter_courses' => 'enrollments#filter_courses', as: "filter_courses"
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
